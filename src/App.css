@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+
+.fixed-size {
+  width: 100px;
+  height: 100px;
+  object-fit: cover; /* crop and fill the box */
+  border-radius: 8px; /* optional, nice rounded look */
+}
+
+.screen-height {
+  height: 90vh;
+}
