@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import NavBar from "./components/NavBar";
 import HotelList from "./components/HotelList";
@@ -7,8 +6,7 @@ import Footer from "./components/Footer";
 import LoginPage from "./components/LoginPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Sidebar from "./components/sideBar";
-import axios from 'axios';
-
+import axios from "axios";
 
 function App() {
   const hotel = [
@@ -62,26 +60,32 @@ function App() {
     },
   ];
 
-  let [hotelList, setHotelList] = useState(hotel)
-  let [totalAmount, setTotalAmount] = useState(0)
+  let [hotelList, setHotelList] = useState(hotel);
+  let [totalAmount, setTotalAmount] = useState(0);
+  let [totalRooms, setTotalRooms] = useState(0);
 
   useEffect(() => {
-    axios.get("http://localhost:3000/api/hotels")
-      .then(res => {
-        const transformeddata = res.data.map(hotel => ({
+    axios
+      .get("http://localhost:3000/api/hotels")
+      .then((res) => {
+        const transformeddata = res.data.map((hotel) => ({
           id: hotel._id,
           name: hotel.hotel_name,
           address: hotel.address,
           timezone: hotel.timezone,
           price: 10000,
           roomsBooked: 0,
-          image: hotel._id % 2 == 0 ? "/assets/le-meridien.webp" : "/assets/itc-chola.webp"
+          image:
+            hotel._id % 2 == 0
+              ? "/assets/le-meridien.webp"
+              : "/assets/itc-chola.webp",
         }));
         setHotelList(transformeddata);
-        console.log(res)
-      }).catch(err => {
-        console.log("Error in fetching hotels");
+        console.log(res);
       })
+      .catch((err) => {
+        console.log("Error in fetching hotels");
+      });
   }, []);
 
   const incrementRoomsBooked = (index) => {
@@ -94,6 +98,7 @@ function App() {
 
     setHotelList(newHotelList);
     setTotalAmount(newTotalAmount);
+    setTotalRooms(totalRooms + 1);
   };
 
   const decreamentRoomsBooked = (index) => {
@@ -106,6 +111,7 @@ function App() {
 
       setHotelList(newHotelList);
       setTotalAmount(newTotalAmount);
+      setTotalRooms(totalRooms - 1);
     }
   };
 
@@ -137,7 +143,7 @@ function App() {
                 <Sidebar
                   className="col-2 position-sticky"
                   totalAmount={totalAmount}
-                  roomCount={hotelList}
+                  roomCount={totalRooms}
                 />
               </main>
               <Footer totalAmount={totalAmount} resetData={resetData}></Footer>
