@@ -1,0 +1,34 @@
+import React from 'react'
+export default function Hotel(props) {
+    return (
+        <div className='container mt-5' style={{ backgroundColor: "#033663ff", borderRadius: "12px" }}>
+            <div className='card p-4' style={{ backgroundColor: 'transparent', border: 'none' }}>
+                <div className='row align-items-center'>
+
+
+                    <div className='col-4'>
+                        <h4 className='fw-bold text-light'>
+                            {props.hotel.name}
+                            <span class="badge bg-primary ms-2">₹{props.hotel.price}</span>
+                        </h4>
+                    </div>
+
+
+                    <div className="col-4 mb-3 text-center">
+                        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                            <button type="button" class="btn btn-primary" onClick={() => props.decreamentRoomsBooked(props.index)}>-</button>
+                            <button type="button" class="btn btn-light">{props.hotel.roomsBooked}</button>
+                            <button type="button" class="btn btn-primary" onClick={() => props.incrementRoomsBooked(props.index)}>+</button>
+                        </div>
+                    </div>
+
+
+                    <div className="col-4 text-light text-end">
+                        {props.hotel.roomsBooked * props.hotel.price}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    )
+}
