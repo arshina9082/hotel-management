@@ -120,6 +120,7 @@ function App() {
     newHotelList.map((hotel) => (hotel.roomsBooked = 0));
     setHotelList(newHotelList);
     setTotalAmount(0);
+    setTotalRooms(0);
   };
 
   return (
