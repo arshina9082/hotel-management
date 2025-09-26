@@ -22,29 +22,31 @@ export default function Hotel(props) {
           <div className="col-4 align-items-start">
             <h4 className="fw-bold text-light">
               {props.hotel.name}
-              <span class="badge bg-primary ms-2">₹{props.hotel.price}</span>
+              <span className="badge bg-primary ms-2">
+                ₹{props.hotel.price}
+              </span>
             </h4>
           </div>
 
           <div className="col-2 mb-3 text-center">
             <div
-              class="btn-group"
+              className="btn-group"
               role="group"
               aria-label="Basic mixed styles example"
             >
               <button
                 type="button"
-                class="btn btn-primary"
+                className="btn btn-primary"
                 onClick={() => props.decreamentRoomsBooked(props.index)}
               >
                 -
               </button>
-              <button type="button" class="btn btn-light">
+              <button type="button" className="btn btn-light">
                 {props.hotel.roomsBooked}
               </button>
               <button
                 type="button"
-                class="btn btn-primary"
+                className="btn btn-primary"
                 onClick={() => props.incrementRoomsBooked(props.index)}
               >
                 +
