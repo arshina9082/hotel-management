@@ -62,6 +62,7 @@ function App() {
 
   let [hotelList, setHotelList] = useState(hotel);
   let [totalAmount, setTotalAmount] = useState(0);
+  let [totalRooms, setTotalRooms] = useState(0);
 
   const incrementRoomsBooked = (index) => {
     console.log("Increment Rooms Booked Called");
@@ -73,6 +74,7 @@ function App() {
 
     setHotelList(newHotelList);
     setTotalAmount(newTotalAmount);
+    setTotalRooms(totalRooms + 1);
   };
 
   const decreamentRoomsBooked = (index) => {
@@ -85,6 +87,7 @@ function App() {
 
       setHotelList(newHotelList);
       setTotalAmount(newTotalAmount);
+      setTotalRooms(totalRooms - 1);
     }
   };
 
@@ -116,7 +119,7 @@ function App() {
                 <Sidebar
                   className="col-2 position-sticky"
                   totalAmount={totalAmount}
-                  roomCount={hotelList}
+                  roomCount={totalRooms}
                 />
               </main>
               <Footer totalAmount={totalAmount} resetData={resetData}></Footer>
